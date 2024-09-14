@@ -21,8 +21,8 @@ def get_embedding(text):
 def get_db_connection():
     conn = psycopg2.connect(
         dbname="your_new_db",
-        user="search_assistant",
-        password="search@123",
+        user="your_username",
+        password="your_password",
         host="localhost"
     )
     return conn

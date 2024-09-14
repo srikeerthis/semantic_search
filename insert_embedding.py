@@ -26,8 +26,8 @@ def insert_document(text):
     # Connect to the PostgreSQL database
     conn = psycopg2.connect(
         dbname="your_new_db",
-        user="search_assistant",
-        password="search@123",
+        user="your_username",
+        password="your_password",
         host="localhost"
     )
     cur = conn.cursor()
