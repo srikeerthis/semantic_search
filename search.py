@@ -4,6 +4,10 @@ import warnings
 warnings.filterwarnings("ignore", message=".*clean_up_tokenization_spaces.*")
 import psycopg2
 from insert_embedding import get_embedding  # Reuse the get_embedding function
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Function to search for similar documents based on a query
 def search_similar_documents(query, top_k=5):
@@ -15,10 +19,10 @@ def search_similar_documents(query, top_k=5):
 
     # Connect to the PostgreSQL database
     conn = psycopg2.connect(
-        dbname="your_new_db",
-        user="your_username",
-        password="your_password",
-        host="localhost"
+        dbname=os.getenv("dbname"),
+        user=os.getenv("user"),
+        password=os.getenv("password"),
+        host=os.getenv("host")
     )
     cur = conn.cursor()
 

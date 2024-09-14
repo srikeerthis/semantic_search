@@ -2,6 +2,10 @@ from flask import Flask, request, jsonify, render_template
 import psycopg2
 from transformers import AutoTokenizer, AutoModel
 import torch
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -20,10 +24,10 @@ def get_embedding(text):
 # Connect to the PostgreSQL database
 def get_db_connection():
     conn = psycopg2.connect(
-        dbname="your_new_db",
-        user="your_username",
-        password="your_password",
-        host="localhost"
+        dbname=os.getenv("dbname"),
+        user=os.getenv("user"),
+        password=os.getenv("password"),
+        host=os.getenv("host")
     )
     return conn
 

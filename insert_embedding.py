@@ -1,10 +1,13 @@
 # insert_embedding.py
 import warnings
 warnings.filterwarnings("ignore", message=".*clean_up_tokenization_spaces.*")
-
+import os
 import psycopg2
 from transformers import AutoTokenizer, AutoModel
 import torch
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Load the pre-trained transformer model for embeddings
 tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v2")
@@ -25,10 +28,10 @@ def insert_document(text):
 
     # Connect to the PostgreSQL database
     conn = psycopg2.connect(
-        dbname="your_new_db",
-        user="your_username",
-        password="your_password",
-        host="localhost"
+        dbname=os.getenv("dbname"),
+        user=os.getenv("user"),
+        password=os.getenv("password"),
+        host=os.getenv("host")
     )
     cur = conn.cursor()
 
