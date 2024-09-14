@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insert Documents</title>
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/insert">Insert Documents</a>
+    </nav>
+
+    <h1>Insert Multiple Documents</h1>
+
+    <!-- Form to insert multiple documents -->
+    <form action="/insert" method="POST">
+      <label for="content">Enter documents (one per line):</label><br /><br />
+      <textarea
+        id="content"
+        name="content"
+        rows="10"
+        cols="60"
+        required
+      ></textarea
+      ><br /><br />
+      <button type="submit">Insert Documents</button>
+    </form>
+
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+  </body>
+</html>
