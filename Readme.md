@@ -1,4 +1,4 @@
-# Flask Semantic Search System
+# Semantic Search using PGVector
 
 This project is a simple Flask-based web application that allows users to insert documents into a PostgreSQL database, and perform semantic searches based on text embeddings. The search functionality is powered by a pre-trained transformer model, and results are retrieved based on similarity to the search query.
 
