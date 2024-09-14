@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Search</title>
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/insert">Insert Documents</a>
+    </nav>
+
+    <h1>Document Search</h1>
+
+    <!-- Search form -->
+    <form action="/" method="POST">
+      <label for="query">Enter query:</label>
+      <input type="text" id="query" name="query" required />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- Display search results if they exist -->
+    {% if results %}
+    <h2>Search Results for "{{ query }}"</h2>
+    <ul>
+      {% for result in results %}
+      <li>
+        <strong>Document ID:</strong> {{ result[0] }} -
+        <strong>Text:</strong> {{ result[1] }} - <strong>Distance:</strong> {{
+        result[2] }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% elif message %}
+    <p>{{ message }}</p>
+    {% endif %}
+  </body>
+</html>
